@@ -2,22 +2,26 @@ from bottle import request
 from datetime import datetime
 from beaker.middleware import SessionMiddleware
 
-appname='Bottle Blog'
-thisyear=datetime.now().year
 
-def basedict():
-    nick='Guest'
-    authed=False
+def baseinfo():
+    # base infomation name,year,auth,nick,avatar
+    bf=info()
     session=request.environ.get('beaker.session')
 
     if session:
-        authed=True
-        nick=session.get('nick')
+        bf.nick=session.get('nick')
+        bf.auth=session.get('auth')
+        bf.id=session.get('id')
 
-    return dict(
-        year=thisyear,
-        appname=appname,
-        authed=authed,
-        nick=nick,
-        avatar='/static/avatar/river.jpg'
-    )
+    return bf
+
+
+class info:
+    def __init__(self):
+        self.name="Bottle Blog"
+        self.year=datetime.now().year
+        self.auth=False
+        self.id=""
+        self.nick="Guest"
+        self.avatar='/static/avatar/river.jpg'
+        self.title=""

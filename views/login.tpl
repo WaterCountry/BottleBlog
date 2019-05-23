@@ -1,4 +1,4 @@
-% rebase('layout.tpl', year=year)
+% rebase('layout.tpl')
 
 <div class="container">
 

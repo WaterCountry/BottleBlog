@@ -2,33 +2,33 @@
 Routes and views for the bottle application.
 """
 
-from bottle import route, view,redirect
+from bottle import route, view,redirect,request,template
 from models import *
-from config import *
+from config import baseinfo
+from pony.orm import db_session
+import html
 
 @route('/')
 @route('/home')
-@view('index')
+@view('home')
 def home():
     """Renders the home page."""
-    based=basedict()
+    bf=baseinfo()
     dd= dict(
         title='Home',
-        message='Your contact page.'
+        info=bf
     )
-    dd.update(based)
     return dd
 
 @route('/contact')
 @view('contact')
 def contact():
     """Renders the contact page."""
-    based=basedict()
+    bf=baseinfo()
     dd= dict(
-        title='Contact',
-        message='Your contact page.'
+        title='contact',
+        info=bf
     )
-    dd.update(based)
     return dd
 
 
@@ -36,23 +36,34 @@ def contact():
 @view('about')
 def about():
     """Renders the about page."""
-    based=basedict()
+    bf=baseinfo()
     dd= dict(
-        title='About',
-        message='Your About page.'
+        title='about',
+        info=bf
     )
-    dd.update(based)
     return dd
 
+@route('/logout')
+@view('home')
+def logout():
+    s=request.environ.get('beaker.session')
+    s.delete()
+
+    bf=baseinfo()
+    dd= dict(
+        title='Home',
+        info=bf
+    )
+    return dd
 
 @route('/login')
 @view('login')
 def login():
-    based=basedict()
+    bf=baseinfo()
     dd= dict(
-        title='Login'
+        title='login',
+        info=bf
     )
-    dd.update(based)
     return dd
 
 @route('/login',method='POST')
@@ -67,12 +78,76 @@ def login():
             s = request.environ.get('beaker.session')
             s['nick'] = u.nick
             s['id'] = u.id
+            s['auth']=True
             s.save()
             redirect('/')
 
-    based=basedict()
+    bf=baseinfo()
     dd= dict(
-        title='Login'
+        title='Home',
+        info=bf
     )
-    dd.update(based)
+    return dd
+
+
+faviconico='/static/images/book.gif'
+
+@route('/favicon.ico')
+def favicon():
+    return faviconico
+
+@route('/blog')
+@db_session
+def blog():
+    page=request.query.page or '1'
+    plimit=5
+    blogs=select(b for b in Blog )
+    blogscount=blogs.count()
+    pnum= int( blogscount/plimit)
+    if blogscount>pnum*plimit:
+        pnum=pnum+1
+
+    blogs=blogs.page(int(page),plimit)
+
+    bf = baseinfo()
+    dd = dict( title='Blog',info=bf, blogs=blogs,pagecount=pnum,cpage=int(page))
+
+    return template('blog',dd)
+
+@route('/blog/<bid>')
+@db_session
+def detail(bid):
+    b=Blog[bid]
+    bf=baseinfo()
+    dd= dict(title='Detail',info=bf,blog=b)
+
+    return template('detail',dd)
+
+
+@route('/add',method='POST')
+@db_session
+def add():
+    title = request.forms.title
+    content = request.forms.content
+    if title.strip() and content.strip():
+        content=html.unescape(content)
+        user_id =  1
+
+        b = Blog(title=title, content=content, update=today, author=User[user_id])
+        bid=b.id
+
+        url='/blog/'+str(bid)
+
+        return bid
+
+
+
+@route('/add')
+@view('add')
+def add():
+    bf = baseinfo()
+    dd = dict(
+        title='Add',
+        info=bf
+    )
     return dd
