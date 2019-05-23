@@ -22,8 +22,8 @@
         </div>
       </div>
       <div class="form-group">
-        <div class="col-sm-offset-6 col-sm-6">
-          <button type="submit" class="btn btn-default ">添加文章</button>
+        <div class="col-sm-offset-6 col-sm-6 ">
+          <button type="submit" class="btn btn-primary  pull-right">添加文章</button>
         </div>
       </div>
     </form>

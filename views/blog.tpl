@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="">
-            <a class="btn btn-primary  active" role="button" href="/add">添加文章</a>
+            <a class="btn btn-primary  " role="button" href="/add">添加文章</a>
         </div>
     </div>
 <div class="row">
