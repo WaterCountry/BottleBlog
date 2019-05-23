@@ -5,7 +5,6 @@ db=Database('sqlite', filename="blog.sqlite", create_db=True)
 
 
 class User(db.Entity):
-    id=PrimaryKey(int,auto=True)
     name=Required(str)
     nick=Required(str)
     password=Required(str)
@@ -14,7 +13,6 @@ class User(db.Entity):
     blogs=Set("Blog")
 
 class Blog(db.Entity):
-    id=PrimaryKey(int,auto=True)
     title=Required(str)
     content=Required(str)
     update=Required(date)

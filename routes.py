@@ -100,7 +100,7 @@ def favicon():
 @db_session
 def blog():
     page=request.query.page or '1'
-    plimit=5
+    plimit=10
     blogs=select(b for b in Blog )
     blogscount=blogs.count()
     pnum= int( blogscount/plimit)
@@ -132,14 +132,10 @@ def add():
     if title.strip() and content.strip():
         content=html.unescape(content)
         user_id =  1
-
         b = Blog(title=title, content=content, update=today, author=User[user_id])
-        bid=b.id
+        url='/blog/'+str(b.id)
 
-        url='/blog/'+str(bid)
-
-        return bid
-
+        redirect(url)
 
 
 @route('/add')
