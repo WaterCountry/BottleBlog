@@ -20,16 +20,16 @@ def home():
     )
     return dd
 
-@route('/contact')
-@view('contact')
+@route('/member')
+@db_session
 def contact():
     """Renders the contact page."""
+    nicks=select(u.nick for u in User )
     bf=baseinfo()
-    dd= dict(
-        title='contact',
-        info=bf
-    )
-    return dd
+
+    dd= dict(title='member',info=bf,nicks=nicks)
+
+    return template('member',dd)
 
 
 @route('/about')
@@ -124,21 +124,24 @@ def detail(id):
     return template('detail',dd)
 
 
+
 @route('/add',method='POST')
 @db_session
 def add():
-    title = request.forms.title
-    content = request.forms.content
-    if title.strip() and content.strip():
-        content=html.unescape(content)
-        user_id =  1
-        b = Blog(title=title, content=content, update=today, author=User[user_id])
-        #blog_id=b.id
-        #blog_title=b.title
-        commit()
+    bf = baseinfo()
+    if bf.auth:
+        title = request.forms.title
+        content = request.forms.content
+        if title.strip() and content.strip():
+            content=html.unescape(content)
+            b = Blog(title=title, content=content, update=today, author=bf.id)
+            commit()
+            # must commit,otherwise not add anything
+            #必须要提交，否则添加不了内容
 
-        #return blog_title+str(blog_id)
-        redirect("/blog/%d" % b.id)
+            redirect("/blog/%d" % b.id)
+    else:
+        redirect('/blog')
 
 
 
@@ -146,8 +149,72 @@ def add():
 @view('add')
 def add():
     bf = baseinfo()
-    dd = dict(
-        title='Add',
+    if bf.auth:
+        dd = dict(
+            title='Add news',
+            info=bf
+        )
+        return dd
+    else:
+        redirect('/blog')
+
+
+@route('/edit/:id')
+@db_session
+def edit(id):
+    bf=baseinfo()
+    if bf.auth:
+        b=Blog[id]
+        dd= dict(title='Edit',info=bf,blog=b)
+        return template('edit',dd)
+    else:
+        redirect("/blog/%s" % id)  # id is string , must be %s ,not be %d
+
+
+@route('/edit/:id',method='POST')
+@db_session
+def add(id):
+    title = request.forms.title
+    content = request.forms.content
+    if title.strip() and content.strip():
+        content=html.unescape(content)
+        b = Blog[id]
+        b.title=title
+        b.content=content
+        b.update=today
+        commit()
+        # We must put the commit() command here, but it is very necessary
+        # because PonyPlugin will take no care of this!!!
+        redirect("/blog/%d" % b.id)
+
+
+@route('/register')
+@view('register')
+def register():
+    bf=baseinfo()
+    dd= dict(
+        title='register',
         info=bf
     )
     return dd
+
+
+@route('/register',method='POST')
+@view('register')
+@db_session
+def register():
+    username = request.forms.username
+    password = request.forms.password
+    nick = request.forms.nick
+
+    if username.strip() and password.strip():
+        u = User( name=username, nick=nick, password=password,email='reg@bottle.com', regdate=today)
+        commit()
+        s = request.environ.get('beaker.session')
+        s['nick'] = u.nick
+        s['id'] = u.id
+        s['auth'] = True
+        s.save()
+        redirect('/')
+    else:
+        return "need username and password! "

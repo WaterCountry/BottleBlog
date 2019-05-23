@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/home">Home</a></li>
                     <li><a href="/blog">Blog</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/member">Member</a></li>
                 </ul>
 
                 %if info.auth:
@@ -35,21 +35,26 @@
                          {{ info.nick }}
                          <a href="/logout ">注销</a>
                          </span>
+                        </li>
                     </ul>
                 %else:
                 <ul class="nav navbar-nav navbar-right ">
-                    <li><a href="/login ">登录</a></li>
+                    <li><span class="navbar-brand">
+                        <a href="/login ">登录</a>
+                    </span>
+                    </li>
                 </ul>
                 %end
 
             </div>
         </div>
     </div>
-
+            <p><br></p>
     <div class="container body-content">
         {{!base}}
         <hr />
         <footer>
+             <p><br></p>
             <p>&copy; {{ info.year }} - {{ info.name }}</p>
         </footer>
     </div>

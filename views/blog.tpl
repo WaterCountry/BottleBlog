@@ -18,6 +18,7 @@
             <th>标题</th>
             <th>日期</th>
             <th>作者</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,7 @@
             <td><a href='/blog/{{ b.id }}'>{{b.title}}</a> </td>
             <td>{{b.update}}</td>
             <td>{{b.author.nick}}</td>
+            <td><a href='/edit/{{ b.id }}'>edit</a></td>
         </tr>
         % end
     </tbody>
