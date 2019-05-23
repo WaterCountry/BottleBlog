@@ -24,6 +24,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/home">Home</a></li>
                     <li><a href="/blog">Blog</a></li>
+                    <li><a href="/photo">Photo</a></li>
                     <li><a href="/member">Member</a></li>
                 </ul>
 

@@ -39,6 +39,7 @@ if __name__ == '__main__':
         PORT = 5555
 
     @bottle.route('/static/<filepath:path>')
+
     def server_static(filepath):
         """Handler for static files, used with the development server.
         When running under a production server such as IIS or Apache,

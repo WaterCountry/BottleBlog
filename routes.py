@@ -2,7 +2,7 @@
 Routes and views for the bottle application.
 """
 
-from bottle import route, view,redirect,request,template
+from bottle import route, view,redirect,request,template,static_file
 from models import *
 from config import baseinfo
 from pony.orm import db_session
@@ -218,3 +218,26 @@ def register():
         redirect('/')
     else:
         return "need username and password! "
+
+
+@route('/upload/<filename:path>')
+def uploadfilepath(filename):
+    return static_file(filename,root='/upload',download=True)
+
+@route('/photo')
+@db_session
+def photo():
+    photos=select(p for p in Photo)
+
+    bf = baseinfo()
+    dd = dict(title='Photo',info=bf,photos=photos)
+    return template('photo',dd)
+
+@route('/upload')
+@db_session
+def upload():
+    uploadfile = request.files.get('image')  # 获取上传的文件
+    upload_path = './upload'  # 定义上传文件的保存路径
+    uploadfile.save(upload_path, overwrite=True)  # overwrite参数是指覆盖同名文件
+    if uploadfile:
+        Photo(name=uploadfile,ext='jpg',url='/upload/'+uploadfile,size='40kb',update=today,author=User[1])
