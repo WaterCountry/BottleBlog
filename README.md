@@ -1,4 +1,6 @@
+
 #Bottle Blog
 
-requirement:  bottle + ponyorm + beaker
+
+## requirement:  bottle + ponyorm + beaker
 
