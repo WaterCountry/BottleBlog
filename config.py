@@ -25,3 +25,4 @@ class info:
         self.nick="Guest"
         self.avatar='/static/avatar/river.jpg'
         self.title=""
+        self.writer="温州水乡"

@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <h2>Getting started</h2>
         <p>
             Bottle gives you a powerful, patterns-based way to build dynamic websites that
@@ -16,14 +16,14 @@
         </p>
         <p><a class="btn btn-default" href="http://bottlepy.org/docs/dev/index.html">Learn more &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+    <div class="col-md-6">
+        <h2>Pony Object-Relational Mapper </h2>
+        <p>
+            Using Pony object-relational mapper you can concentrate on writing business logic
+            of your application and use Python syntax for interacting with the database.
+            Pony translates such queries into SQL and executes them in the database in the
+            most efficient way.
+        </p>
+        <p><a class="btn btn-default" href="https://ponyorm.org/">Learn more &raquo;</a></p>
     </div>
 </div>

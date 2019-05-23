@@ -49,13 +49,11 @@
             </div>
         </div>
     </div>
-            <p><br></p>
     <div class="container body-content">
         {{!base}}
         <hr />
         <footer>
-             <p><br></p>
-            <p>&copy; {{ info.year }} - {{ info.name }}</p>
+            <p>&copy; {{ info.year }} - {{ info.name }} - {{ info.writer }}</p>
         </footer>
     </div>
 
