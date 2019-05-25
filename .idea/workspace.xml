@@ -2,29 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13895a10-fd57-416d-ab6b-c70e8833e6b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/session/container_file/0/03/032c3c05c1eb47e0884403b61ce25afc.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/0/07/070487cdac024477950b0b93d5127c58.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/0/0d/0db8eac182574edb8485fc007aa071c3.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/1/1b/1bbeb3231de64e98b613b97cf9d16ec2.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/1/1e/1eecbf0b39094f5bbeedad56c0f91988.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/2/24/244616f841a94a53864646f2465572b0.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/3/34/3448318ebfd7444da7f48d4456be8e83.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/3/36/36c9160d58e14b92be591802f29bc188.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/5/56/56e2c73325c344c38df05131ccce11e4.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/6/63/63eacbbda49c4ee4b984f713568c7683.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/8/86/865c0d05665a4ae0bac9e771dc7a7108.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/9/9b/9b54a79e197642348ddb0ac7248779c4.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/b/b8/b8944af5457a4930a2f433f7a942114e.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/c/c5/c57cbb7e56ed43f38bccd742720de135.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/d/d8/d8fa6245f03d4dbe879bf3606b07ae7b.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/session/container_file/d/dd/ddac47ad080149959316c50730b0e302.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/photo.tpl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/picture.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/blog.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/content/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/content/site.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/photo.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/views/photo.tpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,10 +21,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="242" column="46" selection-start-line="242" selection-start-column="46" selection-end-line="242" selection-end-column="46" />
+            <state relative-caret-position="288">
+              <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
               <folding>
-                <element signature="e#54#110#0" expanded="true" />
+                <element signature="e#54#122#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -49,44 +33,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/photo.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+            <state relative-caret-position="210">
+              <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.py">
+        <entry file="file://$PROJECT_DIR$/views/picture.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="e#70#83#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="47" column="90" lean-forward="true" selection-start-line="47" selection-start-column="90" selection-end-line="48" selection-end-column="89" />
-              <folding>
-                <element signature="e#0#22#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -108,7 +65,6 @@
         <option value="$PROJECT_DIR$/views/contact.tpl" />
         <option value="$PROJECT_DIR$/views/member.tpl" />
         <option value="$PROJECT_DIR$/views/home.tpl" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/views/blog.tpl" />
         <option value="$PROJECT_DIR$/views/add.tpl" />
@@ -116,16 +72,19 @@
         <option value="$PROJECT_DIR$/views/layout.tpl" />
         <option value="$PROJECT_DIR$/models.py" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/static/content/site.css" />
+        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/views/photo.tpl" />
+        <option value="$PROJECT_DIR$/views/picture.tpl" />
         <option value="$PROJECT_DIR$/routes.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="14" />
-    <option name="y" value="172" />
-    <option name="width" value="1284" />
-    <option name="height" value="648" />
+    <option name="x" value="252" />
+    <option name="y" value="76" />
+    <option name="width" value="1264" />
+    <option name="height" value="806" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -289,26 +248,33 @@
       <option name="project" value="LOCAL" />
       <updated>1558615028370</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="photo">
+      <created>1558653728131</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1558653728131</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15335463" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18051118" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32872927" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49920127" visible="true" weight="0.061191626" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49840257" visible="true" weight="0.13848631" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5007987" side_tool="true" weight="0.2447665" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50159746" side_tool="true" weight="0.2673108" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -319,7 +285,19 @@
     <MESSAGE value="bottle pony beaker" />
     <MESSAGE value="reg,edit" />
     <MESSAGE value="readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme" />
+    <MESSAGE value="photo" />
+    <option name="LAST_COMMIT_MESSAGE" value="photo" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/routes.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitattributes">
@@ -352,24 +330,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/add.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/blog.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -415,49 +379,87 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="26" column="21" lean-forward="true" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="756">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="e#70#83#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/photo.tpl">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" column="11" lean-forward="true" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+        <state relative-caret-position="84">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="47" column="90" lean-forward="true" selection-start-line="47" selection-start-column="90" selection-end-line="48" selection-end-column="89" />
+        <state relative-caret-position="43">
+          <caret line="47" column="90" selection-start-line="47" selection-start-column="90" selection-end-line="48" selection-end-column="89" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/blog.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="777">
+          <caret line="37" selection-start-line="37" selection-end-line="63" selection-end-column="6" />
+          <folding>
+            <element signature="n#div#2;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/content/site.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/-1055577769/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="289" column="4" selection-start-line="289" selection-start-column="4" selection-end-line="289" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/photo.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="51" column="64" selection-start-line="51" selection-start-column="64" selection-end-line="51" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/picture.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="49" column="64" selection-start-line="49" selection-start-column="64" selection-end-line="49" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="242" column="46" selection-start-line="242" selection-start-column="46" selection-end-line="242" selection-end-column="46" />
+        <state relative-caret-position="288">
+          <caret line="281" column="8" selection-start-line="281" selection-start-column="8" selection-end-line="281" selection-end-column="8" />
           <folding>
-            <element signature="e#54#110#0" expanded="true" />
+            <element signature="e#54#122#0" expanded="true" />
           </folding>
         </state>
       </provider>

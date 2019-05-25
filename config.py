@@ -12,6 +12,8 @@ def baseinfo():
         bf.nick=session.get('nick')
         bf.auth=session.get('auth')
         bf.id=session.get('id')
+    else:
+        bf.auth=False
 
     return bf
 

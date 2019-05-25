@@ -7,6 +7,9 @@ from models import *
 from config import baseinfo
 from pony.orm import db_session
 import html
+from os.path import abspath,dirname,join,getsize
+
+upload_path=abspath(join(dirname(__file__),'upload/'))
 
 @route('/')
 @route('/home')
@@ -80,7 +83,7 @@ def login():
             s['id'] = u.id
             s['auth']=True
             s.save()
-            redirect('/')
+            return redirect('/')
 
     bf=baseinfo()
     dd= dict(
@@ -139,9 +142,9 @@ def add():
             # must commit,otherwise not add anything
             #必须要提交，否则添加不了内容
 
-            redirect("/blog/%d" % b.id)
+            return redirect("/blog/%d" % b.id)
     else:
-        redirect('/blog')
+        return redirect('/blog')
 
 
 
@@ -156,7 +159,7 @@ def add():
         )
         return dd
     else:
-        redirect('/blog')
+        return redirect('/blog')
 
 
 @route('/edit/:id')
@@ -168,7 +171,7 @@ def edit(id):
         dd= dict(title='Edit',info=bf,blog=b)
         return template('edit',dd)
     else:
-        redirect("/blog/%s" % id)  # id is string , must be %s ,not be %d
+        return redirect("/blog/%s" % id)  # id is string , must be %s ,not be %d
 
 
 @route('/edit/:id',method='POST')
@@ -185,7 +188,7 @@ def add(id):
         commit()
         # We must put the commit() command here, but it is very necessary
         # because PonyPlugin will take no care of this!!!
-        redirect("/blog/%d" % b.id)
+        return redirect("/blog/%d" % b.id)
 
 
 @route('/register')
@@ -215,29 +218,69 @@ def register():
         s['id'] = u.id
         s['auth'] = True
         s.save()
-        redirect('/')
+        return redirect('/')
     else:
         return "need username and password! "
 
 
 @route('/upload/<filename:path>')
 def uploadfilepath(filename):
-    return static_file(filename,root='/upload',download=True)
+    return static_file(filename,root='./upload',download=True)
 
 @route('/photo')
 @db_session
 def photo():
+    page=request.query.page or '1'
+    plimit=5
     photos=select(p for p in Photo)
+    photoscount=photos.count()
+    pnum= int( photoscount/plimit)
+    if photoscount>pnum*plimit:
+        pnum=pnum+1
+
+    photos=photos.page(int(page),plimit)
+
 
     bf = baseinfo()
-    dd = dict(title='Photo',info=bf,photos=photos)
-    return template('photo',dd)
+    dd = dict(title='Photo',info=bf,photos=photos,pagecount=pnum,cpage=int(page),thispage=page)
+    return template('picture',dd)
 
-@route('/upload')
+@route('/upload',method='POST')
 @db_session
 def upload():
-    uploadfile = request.files.get('image')  # 获取上传的文件
-    upload_path = './upload'  # 定义上传文件的保存路径
-    uploadfile.save(upload_path, overwrite=True)  # overwrite参数是指覆盖同名文件
-    if uploadfile:
-        Photo(name=uploadfile,ext='jpg',url='/upload/'+uploadfile,size='40kb',update=today,author=User[1])
+    page=request.query.page or '1'
+    uploadfile = request.files.get('file')  # 获取上传的文件
+    if not uploadfile:
+        return "select file please!"
+
+    bf = baseinfo()
+    if not bf.auth:
+        return "Not allowed!"
+
+    uploadpath = './upload'  # 定义上传文件的保存路径
+    uploadfile.save(uploadpath, overwrite=True)  # overwrite参数是指覆盖同名文件
+    fname= uploadfile.filename
+    fpath = upload_path +'\\'+ fname
+    size=str( int(getsize(fpath)/1024))+'kb'
+
+    Photo(name=fname,ext='jpg',url=uploadpath+'/'+fname,size=size,update=today,author=User[bf.id])
+    commit()
+    url='/photo?page='+page
+    return redirect(url)
+
+@route('/del/:id')
+@db_session
+def delphoto(id):
+    page=request.query.page or '1'
+    bf = baseinfo()
+    if not bf.auth:
+        return "Not allowed!"
+
+    if id:
+        p= Photo[id]
+        p.delete()
+        commit()
+        url = '/photo?page=' + page
+        return  redirect( url)
+    else:
+        return "nothing"
