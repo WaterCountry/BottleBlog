@@ -256,12 +256,12 @@ def upload():
     bf = baseinfo()
     if not bf.auth:
         return "Not allowed!"
-
+    raw=uploadfile.file.read()
     uploadpath = './upload'  # 定义上传文件的保存路径
     uploadfile.save(uploadpath, overwrite=True)  # overwrite参数是指覆盖同名文件
     fname= uploadfile.filename
-    fpath = upload_path +'\\'+ fname
-    size=str( int(getsize(fpath)/1024))+'kb'
+    #fpath = upload_path +'\\'+ fname
+    size=str( len(raw)/1024)+'kb'  #str( int(getsize(fpath)/1024))+'kb'
 
     Photo(name=fname,ext='jpg',url=uploadpath+'/'+fname,size=size,update=today,author=User[bf.id])
     commit()
