@@ -25,6 +25,7 @@
                     <li><a href="/home">Home</a></li>
                     <li><a href="/blog">Blog</a></li>
                     <li><a href="/photo">Photo</a></li>
+                    <li><a href="/program">Program</a></li>
                     <li><a href="/member">Member</a></li>
                 </ul>
 
@@ -54,7 +55,8 @@
         {{!base}}
         <hr />
         <footer>
-            <p>&copy; {{ info.year }} - {{ info.name }} - {{ info.writer }}</p>
+            <p><img class="thumbnail-imgpage" src="/static/金子塔.jpg"
+                &copy; {{ info.year }} - {{ info.name }} - {{ info.writer }}</p>
         </footer>
     </div>
 

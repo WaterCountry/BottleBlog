@@ -7,7 +7,8 @@ from models import *
 from config import baseinfo
 from pony.orm import db_session
 import html
-from os.path import abspath,dirname,join,getsize
+from os.path import abspath,dirname,join,splitext
+from urllib.parse import unquote,urlencode
 
 upload_path=abspath(join(dirname(__file__),'upload/'))
 
@@ -223,10 +224,6 @@ def register():
         return "need username and password! "
 
 
-@route('/upload/<filename:path>')
-def uploadfilepath(filename):
-    return static_file(filename,root='./upload',download=True)
-
 @route('/photo')
 @db_session
 def photo():
@@ -242,28 +239,32 @@ def photo():
 
 
     bf = baseinfo()
-    dd = dict(title='Photo',info=bf,photos=photos,pagecount=pnum,cpage=int(page),thispage=page)
+    dd = dict(title='Photo',info=bf,photos=photos,pagecount=pnum,cpage=int(page),thispage=page,author=bf.auth)
     return template('picture',dd)
 
 @route('/upload',method='POST')
 @db_session
 def upload():
     page=request.query.page or '1'
-    uploadfile = request.files.get('file')  # 获取上传的文件
-    if not uploadfile:
+    data = request.files.data  # 获取上传的文件
+
+    if not data:
         return "select file please!"
 
     bf = baseinfo()
     if not bf.auth:
         return "Not allowed!"
-    raw=uploadfile.file.read()
-    uploadpath = './upload'  # 定义上传文件的保存路径
-    uploadfile.save(uploadpath, overwrite=True)  # overwrite参数是指覆盖同名文件
-    fname= uploadfile.filename
-    #fpath = upload_path +'\\'+ fname
-    size=str( len(raw)/1024)+'kb'  #str( int(getsize(fpath)/1024))+'kb'
 
-    Photo(name=fname,ext='jpg',url=uploadpath+'/'+fname,size=size,update=today,author=User[bf.id])
+    upurl='/static/upload/'
+    uploadpath = './static/upload/'  # 定义上传文件的保存路径
+    data.save(uploadpath, overwrite=True)  # overwrite参数是指覆盖同名文件
+    fname= data.filename.strip()
+    ext=splitext(fname)[1]
+
+    raw=data.file.read()
+    size=str(int( len(raw)/1024))+'kb'
+
+    Photo(name=fname,ext=ext,url=upurl+fname,size=size,update=today,author=User[bf.id])
     commit()
     url='/photo?page='+page
     return redirect(url)
@@ -284,3 +285,77 @@ def delphoto(id):
         return  redirect( url)
     else:
         return "nothing"
+
+@route('/program')
+@db_session
+def program():
+    page = request.query.page or '1'
+    plimit = 5
+    programs = select(p for p in Program)
+    programscount = programs.count()
+    pnum = int(programscount / plimit)
+    if programscount > pnum * plimit:
+        pnum = pnum + 1
+
+    programs = programs.page(int(page), plimit)
+
+    bf = baseinfo()
+    dd = dict(title='Program', info=bf, programs=programs, pagecount=pnum, cpage=int(page))
+
+    return template('program', dd)
+
+@route('/program/:id')
+@db_session
+def code(id):
+    p=Program[id]
+    bf=baseinfo()
+    dd= dict(title='Code Detail',info=bf,program=p)
+
+    return template('code',dd)
+
+@route('/write')
+@view('write')
+def add():
+    bf = baseinfo()
+    if bf.auth:
+        dd = dict(
+            title='Add program',
+            info=bf
+        )
+        return dd
+    else:
+        return redirect('/program')
+
+@route('/write',method='POST')
+@db_session
+def write():
+    bf = baseinfo()
+    if bf.auth:
+        title = request.forms.title
+        pcode = request.forms.code
+        if title.strip() and pcode.strip():
+            pcode=html.unescape(pcode)
+            p=Program(title=title,code=pcode,update=today,level='0')
+            commit()
+            # must commit,otherwise not add anything
+            #必须要提交，否则添加不了内容
+
+            return redirect("/program/%d" % p.id)
+    else:
+        return redirect('/program')
+
+
+@route('/judge',method='POST')
+def judge():
+    progradcode=request.forms.code
+
+    return  progradcode
+
+@route('/program/:id',method='POST')
+def rewrite(id):
+
+    progradcode = request.forms.code
+    p=Program[id]
+    p.code=progradcode
+    return redirect('/program')
+

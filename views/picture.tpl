@@ -7,14 +7,16 @@
 <div class="container">
 
 <div class="row">
+    %if author:
     <form  class="form-inline form-right"  action="upload?page={{ thispage }} " method="post" enctype="multipart/form-data">
         <div class="form-group">
-              <input id="image" type="file" name="file">
+              <input id="image" type="file" name="data">
         </div>
         <div class="form-group">
         <input class="btn btn-primary"  type="submit" value="上传图片" />
         </div>
     </form>
+    %end
 </div>
 
 <div class="row">
@@ -33,6 +35,7 @@
 			<tr>
 				<th></th>
 				<th>图片</th>
+                <th>类型</th>
 				<th>大小</th>
 				<th>日期</th>
                 <th>作者</th>
@@ -44,10 +47,15 @@
 			<tr>
 				<td>{{p.id}}</td>
 				<td>{{p.name}}</td>
+                <td>{{p.ext }}</td>
 				<td>{{p.size}}</td>
 				<td>{{p.update}}</td>
                 <td>{{p.author.nick }}</td>
-				<td><a href="/del/{{ p.id }}?page={{ thispage }}">del</a> </td>
+				<td>
+                    %if author:
+                    <a href="/del/{{ p.id }}?page={{ thispage }}">del</a>
+                    %end
+                </td>
 			</tr>
 			%end
 		</tbody>

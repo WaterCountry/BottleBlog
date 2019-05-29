@@ -35,6 +35,7 @@
 			<tr>
 				<th></th>
 				<th>图片</th>
+                <th>类型</th>
 				<th>大小</th>
 				<th>日期</th>
                 <th>作者</th>
@@ -46,6 +47,7 @@
 			<tr>
 				<td>{{p.id}}</td>
 				<td>{{p.name}}</td>
+                <td>{{p.ext }}</td>
 				<td>{{p.size}}</td>
 				<td>{{p.update}}</td>
                 <td>{{p.author.nick }}</td>

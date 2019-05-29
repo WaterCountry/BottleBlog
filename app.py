@@ -39,12 +39,12 @@ if __name__ == '__main__':
         PORT = 5555
 
     @bottle.route('/static/<filepath:path>')
-
     def server_static(filepath):
         """Handler for static files, used with the development server.
         When running under a production server such as IIS or Apache,
         the server should be configured to serve the static files."""
         return bottle.static_file(filepath, root=STATIC_ROOT)
+
 
     # Starts a local test server.
     bottle.run(app=app,server='wsgiref', host=HOST, port=PORT)
