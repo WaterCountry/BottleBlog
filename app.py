@@ -32,6 +32,7 @@ def wsgi_app():
 if __name__ == '__main__':
     PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static').replace('\\', '/')
+    STORE_ROOT = os.path.join(PROJECT_ROOT, 'store').replace('\\', '/')
     HOST = os.environ.get('SERVER_HOST', 'localhost')
     try:
         PORT = int(os.environ.get('SERVER_PORT', '5555'))
@@ -44,6 +45,11 @@ if __name__ == '__main__':
         When running under a production server such as IIS or Apache,
         the server should be configured to serve the static files."""
         return bottle.static_file(filepath, root=STATIC_ROOT)
+
+
+    @bottle.route('/store/<filepath:path>')
+    def store(filepath):
+        return bottle.static_file(filepath, root=STORE_ROOT)
 
 
     # Starts a local test server.

@@ -1,7 +1,12 @@
 from bottle import request
 from datetime import datetime
 from beaker.middleware import SessionMiddleware
+import os
 
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static').replace('\\', '/')
+STORE_ROOT = os.path.join(PROJECT_ROOT, 'store').replace('\\', '/')
 
 def baseinfo():
     # base infomation name,year,auth,nick,avatar

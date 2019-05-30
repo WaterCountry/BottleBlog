@@ -4,13 +4,13 @@ Routes and views for the bottle application.
 
 from bottle import route, view,redirect,request,template,static_file
 from models import *
-from config import baseinfo
+from config import baseinfo,STORE_ROOT
 from pony.orm import db_session
 import html
 from os.path import abspath,dirname,join,splitext
 from urllib.parse import unquote,urlencode
 
-upload_path=abspath(join(dirname(__file__),'upload/'))
+
 
 @route('/')
 @route('/home')
@@ -228,7 +228,7 @@ def register():
 @db_session
 def photo():
     page=request.query.page or '1'
-    plimit=5
+    plimit=6
     photos=select(p for p in Photo)
     photoscount=photos.count()
     pnum= int( photoscount/plimit)
@@ -241,6 +241,7 @@ def photo():
     bf = baseinfo()
     dd = dict(title='Photo',info=bf,photos=photos,pagecount=pnum,cpage=int(page),thispage=page,author=bf.auth)
     return template('picture',dd)
+
 
 @route('/upload',method='POST')
 @db_session
@@ -255,8 +256,8 @@ def upload():
     if not bf.auth:
         return "Not allowed!"
 
-    upurl='/static/upload/'
-    uploadpath = './static/upload/'  # 定义上传文件的保存路径
+    upurl='/store/'
+    uploadpath = './store/'  # 定义上传文件的保存路径
     data.save(uploadpath, overwrite=True)  # overwrite参数是指覆盖同名文件
     fname= data.filename.strip()
     ext=splitext(fname)[1]
@@ -280,6 +281,7 @@ def delphoto(id):
     if id:
         p= Photo[id]
         p.delete()
+
         commit()
         url = '/photo?page=' + page
         return  redirect( url)

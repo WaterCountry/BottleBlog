@@ -43,6 +43,7 @@ from tempfile import TemporaryFile
 from traceback import format_exc, print_exc
 from inspect import getargspec
 from unicodedata import normalize
+import urllib
 
 
 try: from simplejson import dumps as json_dumps, loads as json_lds
@@ -2518,8 +2519,6 @@ def static_file(filename, root, mimetype='auto', download=False, charset='UTF-8'
         if body: body = _file_iter_range(body, offset, end-offset)
         return HTTPResponse(body, status=206, **headers)
     return HTTPResponse(body, **headers)
-
-
 
 
 

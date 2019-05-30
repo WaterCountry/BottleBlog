@@ -22,8 +22,7 @@
 <div class="row">
   	<div class="thumbnail-pagediv">
 		%for p in photos:
-		<img class="thumbnail-imgpage" src="{{ p.url}}"
-		alt="{{ p.name }}">
+		<img class="thumbnail-imgpage" src="{{ p.url}}" alt="{{ p.name }}">
 		%end
 	</div>
 </div>
@@ -37,6 +36,7 @@
 				<th>图片</th>
                 <th>类型</th>
 				<th>大小</th>
+                <th>链接</th>
 				<th>日期</th>
                 <th>作者</th>
                 <th></th>
@@ -49,6 +49,7 @@
 				<td>{{p.name}}</td>
                 <td>{{p.ext }}</td>
 				<td>{{p.size}}</td>
+                <td>{{p.url }}</td>
 				<td>{{p.update}}</td>
                 <td>{{p.author.nick }}</td>
 				<td>

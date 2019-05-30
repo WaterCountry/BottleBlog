@@ -55,8 +55,7 @@
         {{!base}}
         <hr />
         <footer>
-            <p><img class="thumbnail-imgpage" src="/static/金子塔.jpg"
-                &copy; {{ info.year }} - {{ info.name }} - {{ info.writer }}</p>
+                &copy; {{ info.year }} - {{ info.name }} - {{ info.writer }}
         </footer>
     </div>
 

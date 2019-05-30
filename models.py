@@ -65,8 +65,8 @@ def addtable_program():
 def addtable_photo():
     if select(p for p in Photo).count()>0:
         return
-    Photo(name='1',ext='jpg',url='/upload/1.jpg',size='557kb',update=today,author=User[1])
-    Photo(name='2',ext='jpg',url='/upload/2.jpg',size='40kb',update=today,author=User[1])
+    Photo(name='1',ext='jpg',url='/store/1.jpg',size='557kb',update=today,author=User[1])
+    Photo(name='2',ext='jpg',url='/store/2.jpg',size='40kb',update=today,author=User[1])
 
 
 populate_database()
