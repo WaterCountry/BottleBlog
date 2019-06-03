@@ -8,6 +8,13 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static').replace('\\', '/')
 STORE_ROOT = os.path.join(PROJECT_ROOT, 'store').replace('\\', '/')
 
+
+def getfilepath(dirname,filename):
+    ## return abspath
+    FPATH_ROOT=os.path.join(PROJECT_ROOT,dirname).replace('\\','/')
+    filepath=FPATH_ROOT+'/'+filename
+    return filepath
+
 def baseinfo():
     # base infomation name,year,auth,nick,avatar
     bf=info()

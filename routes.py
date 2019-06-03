@@ -2,9 +2,9 @@
 Routes and views for the bottle application.
 """
 
-from bottle import route, view,redirect,request,template,static_file
+from bottle import route, view,redirect,request,template,static_onefile
 from models import *
-from config import baseinfo,STORE_ROOT
+from config import baseinfo,getfilepath
 from pony.orm import db_session
 import html
 from os.path import abspath,dirname,join,splitext
@@ -12,7 +12,6 @@ from urllib.parse import unquote,urlencode
 
 
 
-@route('/')
 @route('/home')
 @view('home')
 def home():
@@ -288,6 +287,7 @@ def delphoto(id):
     else:
         return "nothing"
 
+
 @route('/program')
 @db_session
 def program():
@@ -306,14 +306,16 @@ def program():
 
     return template('program', dd)
 
+
+@route('/')
 @route('/program/:id')
 @db_session
-def code(id):
+def code(id=1):
     p=Program[id]
     bf=baseinfo()
     dd= dict(title='Code Detail',info=bf,program=p)
 
-    return template('code',dd)
+    return template('source',dd)
 
 @route('/write')
 @view('write')
@@ -354,10 +356,9 @@ def judge():
     return  progradcode
 
 @route('/program/:id',method='POST')
-def rewrite(id):
-
+def rewrite(id=1):
     progradcode = request.forms.code
     p=Program[id]
     p.code=progradcode
-    return redirect('/program')
+    return progradcode
 

@@ -9,6 +9,8 @@ from beaker.middleware import SessionMiddleware
 # routes contains the HTTP handlers for our server and must be imported.
 import routes
 
+from config import getfilepath
+
 session_opts = {
     'session.type': 'file',
     'session.cookie_expires': 600,
@@ -51,6 +53,12 @@ if __name__ == '__main__':
     def store(filepath):
         return bottle.static_file(filepath, root=STORE_ROOT)
 
+
+    @bottle.route('/<pathname>/<filename>')
+    def test(pathname, filename):
+        pathname = 'test'
+        filepath = getfilepath(pathname, filename)
+        return bottle.static_onefile(filepath)
 
     # Starts a local test server.
     bottle.run(app=app,server='wsgiref', host=HOST, port=PORT)
