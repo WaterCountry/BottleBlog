@@ -1,7 +1,8 @@
 body {
-    padding-top: 60px;
+    padding-top: 50px;
     padding-bottom: 20px;
     font-family:Arial,'Times New Roman','Microsoft YaHei',SimHei;
+    overflow:hidden;
 }
 
 /* Set padding to keep content from hitting the edges */
