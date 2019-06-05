@@ -2,12 +2,12 @@
 
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: monospace;
+  font-family: Consolas,monospace;
   height: 600px;
   color: black;
   direction: ltr;
   line-height:150%;
-  font-size:20px;
+  font-size:18px;
 }
 
 /* PADDING */

@@ -312,8 +312,9 @@ def program():
 @db_session
 def code(id=1):
     p=Program[id]
+    programs=select(m for m in Program)
     bf=baseinfo()
-    dd= dict(title='Code Detail',info=bf,program=p)
+    dd= dict(title='Code Detail',info=bf,programs=programs,program=p)
 
     return template('source',dd)
 

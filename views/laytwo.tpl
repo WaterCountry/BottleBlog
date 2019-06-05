@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - {{ info.name }} </title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/content/darkstrap.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
@@ -21,13 +22,6 @@
                 <a href="/" class="navbar-brand">{{ info.name }}</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                    <li><a href="/photo">Photo</a></li>
-                    <li><a href="/program">Program</a></li>
-                    <li><a href="/member">Member</a></li>
-                </ul>
 
                 %if info.auth:
                     <ul class="nav navbar-nav navbar-right ">
